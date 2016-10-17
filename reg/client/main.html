@@ -28,24 +28,33 @@
     <section class="mainBg">
         
         <div class="row">
-            <form class="col s5" style="padding-left:0">
+            <form id="regForm" class="col s5" style="padding-left:0">
                 <a class="backA" href="http://www.csdon.org/"><i class="material-icons">swap_horiz</i><b>BACK TO</b> &nbsp;CSDON.ORG</a>
                 <h4 class="pgTitle">REGISTER FOR RUN</h4>
-                <div class="row">
+                <button class="reset">Reset</button>
+
+                <!-- <div class="row">
                     <div class="input-field col s12">
                         <select id="reg_type">
                             <option>INDIVIDUAL</option>
-                            <option>A TEAM</option>
+                            <option>TEAM</option>
                         </select>
                         <label>REGISTERING AS:</label>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input placeholder="" id="full_name" type="text" class="validate">
-                        <label for="full_name">FULL NAME</label>
-                    </div>
-                </div>
+                </div> -->
+                {{#if team}}
+                    <button class="toIndiv">Change to Individual</button>
+                    <h1>Team</h1>
+                    {{#each loopCount memberCount}}
+                        {{>member count=@index}}
+                    {{/each}}
+                        <button class="addMember">+</button>
+                {{else}}
+                    <button class="toTeam">Change to Team</button>
+                    <h1>Individual</h1>
+                    {{>member}}
+                {{/if}}
+                
                 <div class="row">
                     <div class="input-field col s12">
                         <input placeholder="" id="address" type="text" class="validate">
@@ -72,19 +81,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="input-field col s12">
-                        <select id="tSize">
-                            <option>Select one</option>
-                            <option value="s">S</option>
-                            <option value="m">M</option>
-                            <option value="l">L</option>
-                            <option value="xl">XL</option>
-                            <option value="xxl">XXL</option>
-                        </select>
-                        <label for="tSize">T-SHIRT SIZE</label>
-                    </div>
-                </div>
-                <div class="row">
                     <div class="col s12 ordTtl">
                         TOTAL: <b>&#8358;10000</b>  
                     </div>
@@ -106,4 +102,27 @@
     
     
 </body>
-
+<template name="member">
+<div id="container{{count}}">
+     <div class="row">
+        <div class="input-field col s12">
+            <input placeholder="" id="full_name{{count}}" type="text" class="validate">
+            <label for="full_name">FULL NAME</label>
+        </div>
+    </div>
+    <div class="row">
+        <div class="input-field col s12">
+            <select id="tSize">
+                <option>Select one</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+            </select>
+            <label for="tSize">T-SHIRT SIZE</label>
+        </div>
+    </div>
+    <!-- <button class="removeMember" id="{{count}}del">-</button> -->
+</div>
+</template>
