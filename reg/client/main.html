@@ -33,7 +33,7 @@
                 <a class="backA" href="http://www.csdon.org/"><i class="material-icons">swap_horiz</i><b>BACK TO</b> &nbsp;CSDON.ORG</a>
 
                 {{#if team}}
-                <h4 class="pgTitle">REGISTER FOR RUN  -  TEAM</h4>
+                <h4 class="pgTitle">REGISTER FOR RUN  -  TEAM (5 minimum)</h4>
                 <a class="reset waves-effect waves-light btn right"><i class="material-icons right">replay</i>RESET FORM</a>
 
                  <div class="row">
@@ -58,8 +58,6 @@
                 </div>
                 {{else}}
                 <h4 class="pgTitle">REGISTER FOR RUN  -  INDIVIDUAL</h4>
-                
-
                  <div class="row">
                     <div class="input-field col s12">
                         <select name ="regType" id="reg_type">
@@ -78,12 +76,14 @@
                     <div class="input-field col s12">
                         <input name ="address" id="address" type="text" class="validate">
                         <label for="address" data-success="It helps our outreach to know the demographics of our supporters.">ADDRESS</label>
+<!--
                         <div class="input-field col s6">
                             <input placeholder="City" name ="city" id="city" type="text" class="validate">
                         </div>
                         <div class="input-field col s6">
                             <input placeholder="State" name ="state" id="state" type="text" class="validate">
                         </div>
+-->
                         
                     </div>
                 </div>
@@ -116,9 +116,6 @@
                 <img src="/assets/rfclogo.png" height="150">
             </div>
         </div>
-        
-        
-        
     </section>
     
     
@@ -128,6 +125,66 @@
 <div id="container{{count}}">
      <div class="row">
         <div class="input-field col s6">
+            <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
+            <label for="full_name">ADD TEAM MEMBER</label>
+        </div>
+        <div class="input-field col s6">
+            <select name = "tSize{{count}}" id="tSize{{count}}">
+                <option>Select one</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+            </select>
+            <label for="tSize">T-SHIRT SIZE</label>
+        </div>
+         <div class="input-field col s6">
+            <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
+            <label for="full_name">ADD TEAM MEMBER</label>
+        </div>
+        <div class="input-field col s6">
+            <select name = "tSize{{count}}" id="tSize{{count}}">
+                <option>Select one</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+            </select>
+            <label for="tSize">T-SHIRT SIZE</label>
+        </div>
+         <div class="input-field col s6">
+            <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
+            <label for="full_name">ADD TEAM MEMBER</label>
+        </div>
+        <div class="input-field col s6">
+            <select name = "tSize{{count}}" id="tSize{{count}}">
+                <option>Select one</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+            </select>
+            <label for="tSize">T-SHIRT SIZE</label>
+        </div>
+         <div class="input-field col s6">
+            <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
+            <label for="full_name">ADD TEAM MEMBER</label>
+        </div>
+        <div class="input-field col s6">
+            <select name = "tSize{{count}}" id="tSize{{count}}">
+                <option>Select one</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+            </select>
+            <label for="tSize">T-SHIRT SIZE</label>
+        </div>
+         <div class="input-field col s6">
             <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
             <label for="full_name">ADD TEAM MEMBER</label>
         </div>
