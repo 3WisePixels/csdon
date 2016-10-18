@@ -67,33 +67,34 @@
                 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="full_name" type="text" class="validate">
-                        <label for="full_name">FULL NAME</label>
+                        <input id="team_name" type="text" class="validate">
+                        <label for="team_name">TEAM NAME</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="address" type="text" class="validate">
+                        <label for="address" data-success="It helps our outreach to know the demographics of our supporters.">ADDRESS</label>
                         <div class="input-field col s6">
                             <input placeholder="City" id="city" type="text" class="validate">
                         </div>
                         <div class="input-field col s6">
                             <input placeholder="State" id="state" type="text" class="validate">
                         </div>
-                        <label >ADDRESS</label>
+                        
                     </div>
                 </div>
                 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="phone" type="text" class="validate">
-                        <label for="phone">PHONE</label>
+                        <input id="phone" type="text" pattern="^\d{11}|\d{9}$" required class="validate">
+                        <label for="phone" data-error="Please enter a valid phone number." data-success="Thanks! We don't share your personal info.">PHONE (Mobile 11 Digits | Landline 9 Digits)</label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="email" type="email" class="validate">
-                        <label for="email">EMAIL</label>
+                        <label data-error="Please enter a valid email so we can contact you about the run." data-success="Thanks! We don't share your personal info." for="email">EMAIL</label>
                     </div>
                 </div>
                 <div class="row">
