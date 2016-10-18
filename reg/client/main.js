@@ -10,11 +10,11 @@ Template.body.events({
 		console.log(selection);
 		if (selection == 'TEAM') {
 			//document.location.reload(true);
-			Session.setPersistent("team",true);
+			Session.set("team",true);
 		}
 		else {
 			//document.location.reload(true);
-			Session.setPersistent("team",false);
+			Session.set("team",false);
 		}
   	},
 	'click .payBtn': function(event) {
@@ -31,21 +31,21 @@ Template.body.events({
 	},
 	'click .reset': function(event){
 		event.preventDefault();
-		Session.setPersistent('memberCount',1);
+		Session.set('memberCount',1);
 		//document.location.reload(true);
 
 	},
 	'click .toTeam': function(event){
 		event.preventDefault();
-		Session.setPersistent("team",true);
-		Session.setPersistent('memberCount',1);
+		Session.set("team",true);
+		Session.set('memberCount',1);
 
 		//document.location.reload(true);
 
 	},
 	'click .toIndiv': function(event){
 		event.preventDefault();
-		Session.setPersistent("team",false);
+		Session.set("team",false);
 		//document.location.reload(true);
 
 	},
@@ -57,7 +57,7 @@ Template.body.events({
 		}
 		currCount = Session.get('memberCount');
 		currCount += 1;
-		Session.setPersistent('memberCount',currCount);
+		Session.set('memberCount',currCount);
 		//document.location.reload(true);
 	},
 	// 'click .removeMember': function(event){
@@ -68,7 +68,7 @@ Template.body.events({
 	// 	elem.parentNode.removeChild(elem);
 	// 	currCount = Session.get('memberCount');
 	// 	currCount -= 1;
-	// 	Session.setPersistent('memberCount',currCount);
+	// 	Session.set('memberCount',currCount);
 	// }
 })
 
