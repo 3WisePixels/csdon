@@ -20,7 +20,7 @@ body{
     height:100%;
     padding:2.5% 0;
 }
-.mainBg form>*{
+.mainBg form>*:not('reset'){
     padding-left:10%;
 }
 .mainBg form .backA{
@@ -34,16 +34,24 @@ body{
     font-size:1.5em;
     margin-left: 5%;
 }
+.mainBg form .backA:hover{
+    text-decoration:underline;
+}
 .mainBg form .pgTitle{
     background:#005778;
     color:#fff;
     font-size:1.5em;
     font-weight:600;
-    padding:2% 0 2% 12%;
+    padding:3% 0 2% 12%;
 }
 .ordTtl{
     font-weight:bold;
-    font-size:1.2em;
+    font-size:1.3em;
+}
+.ordTtl p{
+    font-weight:400;
+    color:#004d40;
+    font-size:0.9em;
 }
 .ordTtl img{
     width:5%;
@@ -65,8 +73,18 @@ body{
 .mainBg>.row>.s7{
     padding:33% 0 0 11%;
 }
-
-
+.reset{
+    background:#960018;
+}
+.addMember{
+    background:#F05B6E;
+}
+label[for=phone] i{
+    font-size:0.9em;
+    font-variant:small-caps;
+    font-style: normal;
+    font-weight:500;
+}
 
 
 /* label color */
@@ -97,4 +115,7 @@ body{
 /* icon prefix focus color */
 .input-field .prefix.active {
  color: #F05B6E;
+}
+.dropdown-content li > a, .dropdown-content li > span{
+    color:#F05B6E;
 }

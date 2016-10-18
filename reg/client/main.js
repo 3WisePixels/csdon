@@ -2,7 +2,10 @@ Session.setDefault('memberCount',1);
 
 Template.body.onRendered(function() {
     $('select').material_select();
-})
+});
+Template.single.onRendered(function() {
+    $('select').material_select();
+});
 
 Template.body.events({
 	'change #reg_type': function (event, template) {
@@ -30,10 +33,12 @@ Template.body.events({
 		alert('Registered!');
 	},
 	'click .reset': function(event){
-		event.preventDefault();
-		Session.set('memberCount',1);
-		//document.location.reload(true);
-
+		//event.preventDefault();		
+        if( ! confirm("Are you sure you want to do this?") ){
+            e.preventDefault();
+        } else {
+            Session.set('memberCount',1);
+        }
 	},
 	'click .toTeam': function(event){
 		event.preventDefault();

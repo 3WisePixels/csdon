@@ -33,7 +33,7 @@
 
                 {{#if team}}
                 <h4 class="pgTitle">REGISTER FOR RUN  -  TEAM</h4>
-                <button class="reset">Reset</button>
+                <a class="reset waves-effect waves-light btn right"><i class="material-icons right">replay</i>RESET FORM</a>
 
                  <div class="row">
                     <div class="input-field col s12">
@@ -48,10 +48,16 @@
                     {{#each loopCount memberCount}}
                         {{>member count=@index}}
                     {{/each}}
-                        <a class="addMember btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">add</i></a>
+                        <a class="addMember btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="team_name" type="text" class="validate">
+                        <label for="team_name">TEAM NAME</label>
+                    </div>
+                </div>
                 {{else}}
                 <h4 class="pgTitle">REGISTER FOR RUN  -  INDIVIDUAL</h4>
-                <button class="reset">Reset</button>
+                
 
                  <div class="row">
                     <div class="input-field col s12">
@@ -61,16 +67,12 @@
                         </select>
                         <label>REGISTERING AS:</label>
                     </div>
-                </div> 
-                    {{>member}}
+                </div>
+                
+                {{>single}}
                 {{/if}}
                 
-                <div class="row">
-                    <div class="input-field col s12">
-                        <input id="team_name" type="text" class="validate">
-                        <label for="team_name">TEAM NAME</label>
-                    </div>
-                </div>
+                
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="address" type="text" class="validate">
@@ -88,7 +90,7 @@
                 <div class="row">
                     <div class="input-field col s12">
                         <input id="phone" type="text" pattern="^\d{11}|\d{9}$" required class="validate">
-                        <label for="phone" data-error="Please enter a valid phone number." data-success="Thanks! We don't share your personal info.">PHONE (Mobile 11 Digits | Landline 9 Digits)</label>
+                        <label for="phone" data-error="Please enter a valid phone number." data-success="Thanks! We don't share your personal info.">PHONE <i>(mobile 11 digits | landline 9 digits)</i></label>
                     </div>
                 </div>
                 <div class="row">
@@ -100,6 +102,7 @@
                 <div class="row">
                     <div class="col s12 ordTtl">
                         TOTAL: <img src="/assets/naira.png"><b>10000</b>  
+                        <p>Thank you for your contribution and continued support!</p>
                     </div>
                 </div>
                 <div class="payBtn">
@@ -116,6 +119,7 @@
         
         
     </section>
+    
     
     
 </body>
@@ -138,6 +142,27 @@
             <label for="tSize">T-SHIRT SIZE</label>
         </div>
     </div>
+    
     <!-- <button class="removeMember" id="{{count}}del">-</button> -->
+</div>
+</template>
+
+<template name="single">
+<div class="row">
+    <div class="input-field col s6">
+        <input id="full_name{{count}}" type="text" class="validate">
+        <label for="full_name">FULL NAME</label>
+    </div>
+    <div class="input-field col s6">
+        <select id="tSize">
+            <option>Select one</option>
+            <option value="s">S</option>
+            <option value="m">M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
+            <option value="xxl">XXL</option>
+        </select>
+        <label for="tSize">T-SHIRT SIZE</label>
+    </div>
 </div>
 </template>
