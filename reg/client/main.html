@@ -30,6 +30,8 @@
         <div class="row">
             <form id="regForm" class="col s5" style="padding-left:0">
                 <a class="backA" href="http://www.csdon.org/"><i class="material-icons">swap_horiz</i><b>BACK TO</b> &nbsp;CSDON.ORG</a>
+
+                {{#if team}}
                 <h4 class="pgTitle">REGISTER FOR RUN  -  TEAM</h4>
                 <button class="reset">Reset</button>
 
@@ -42,18 +44,24 @@
                         <label>REGISTERING AS:</label>
                     </div>
                 </div> 
-                {{#if team}}
-                
-                
-                    
-                    
+
                     {{#each loopCount memberCount}}
                         {{>member count=@index}}
                     {{/each}}
                         <a class="addMember btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">add</i></a>
                 {{else}}
-                    
-                    <h1>Individual</h1>
+                <h4 class="pgTitle">REGISTER FOR RUN  -  INDIVIDUAL</h4>
+                <button class="reset">Reset</button>
+
+                 <div class="row">
+                    <div class="input-field col s12">
+                        <select id="reg_type">
+                            <option>INDIVIDUAL</option>
+                            <option>TEAM</option>
+                        </select>
+                        <label>REGISTERING AS:</label>
+                    </div>
+                </div> 
                     {{>member}}
                 {{/if}}
                 
