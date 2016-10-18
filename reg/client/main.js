@@ -2,9 +2,26 @@ Session.setDefault('memberCount',1);
 
 Template.body.onRendered(function() {
     $('select').material_select();
+    selection = Session.get('team');
+	if (selection) {
+    	document.getElementById('reg_type').value='TEAM';
+	}
+	else {
+	    document.getElementById('reg_type').value='INDIVIDUAL';
+
+	}
 });
+
 Template.single.onRendered(function() {
     $('select').material_select();
+    selection = Session.get('team');
+	if (selection) {
+    	document.getElementById('reg_type').value='TEAM';
+	}
+	else {
+	    document.getElementById('reg_type').value='INDIVIDUAL';
+
+	}
 });
 
 Template.body.events({
@@ -30,6 +47,22 @@ Template.body.events({
 			participant[res[i].name] = res[i].value;
 		}
 		console.log(participant);
+        var handler = PaystackPop.setup({
+            key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
+            email: 'thepixelbank@3wp.io',
+            amount: 1000000,
+            ref: Date(),
+            callback: function(response){
+              console.log('Success. transaction ref is ' + response.trxref);
+              
+              alert('Reg complete.Thank you');
+              // Router.go('/viewOrder/'+orderId);
+            },
+            onClose: function(){
+            	
+        }
+        });
+        handler.openIframe();
 		alert('Registered!');
 	},
 	'click .reset': function(event){
@@ -65,16 +98,6 @@ Template.body.events({
 		Session.set('memberCount',currCount);
 		//document.location.reload(true);
 	},
-	// 'click .removeMember': function(event){
-	// 	event.preventDefault();
-	// 	ind = event.currentTarget.id[0];
-	// 	var elem = document.getElementById("container"+ind);
-	// 	console.log(elem);
-	// 	elem.parentNode.removeChild(elem);
-	// 	currCount = Session.get('memberCount');
-	// 	currCount -= 1;
-	// 	Session.set('memberCount',currCount);
-	// }
 })
 
 Template.body.helpers({

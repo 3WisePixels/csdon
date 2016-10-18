@@ -21,6 +21,7 @@
 
 <link rel="shortcut icon" href="/assets/favicon.png">
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<script src="https://js.paystack.co/v1/inline.js"></script>
 
 </head>
 
@@ -37,9 +38,9 @@
 
                  <div class="row">
                     <div class="input-field col s12">
-                        <select id="reg_type">
-                            <option>INDIVIDUAL</option>
+                        <select name ="regType" id="reg_type">
                             <option>TEAM</option>
+                            <option>INDIVIDUAL</option>
                         </select>
                         <label>REGISTERING AS:</label>
                     </div>
@@ -51,7 +52,7 @@
                         <a class="addMember btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="team_name" type="text" class="validate">
+                        <input name="teamName" id="team_name" type="text" class="validate">
                         <label for="team_name">TEAM NAME</label>
                     </div>
                 </div>
@@ -61,7 +62,7 @@
 
                  <div class="row">
                     <div class="input-field col s12">
-                        <select id="reg_type">
+                        <select name ="regType" id="reg_type">
                             <option>INDIVIDUAL</option>
                             <option>TEAM</option>
                         </select>
@@ -75,13 +76,13 @@
                 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="address" type="text" class="validate">
+                        <input name ="address" id="address" type="text" class="validate">
                         <label for="address" data-success="It helps our outreach to know the demographics of our supporters.">ADDRESS</label>
                         <div class="input-field col s6">
-                            <input placeholder="City" id="city" type="text" class="validate">
+                            <input placeholder="City" name ="city" id="city" type="text" class="validate">
                         </div>
                         <div class="input-field col s6">
-                            <input placeholder="State" id="state" type="text" class="validate">
+                            <input placeholder="State" name ="state" id="state" type="text" class="validate">
                         </div>
                         
                     </div>
@@ -89,13 +90,13 @@
                 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="phone" type="text" pattern="^\d{11}|\d{9}$" required class="validate">
+                        <input name ="phone" id="phone" type="text" pattern="^\d{11}|\d{9}$" required class="validate">
                         <label for="phone" data-error="Please enter a valid phone number." data-success="Thanks! We don't share your personal info.">PHONE <i>(mobile 11 digits | landline 9 digits)</i></label>
                     </div>
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input id="email" type="email" class="validate">
+                        <input name ="email" id="email" type="email" class="validate">
                         <label data-error="Please enter a valid email so we can contact you about the run." data-success="Thanks! We don't share your personal info." for="email">EMAIL</label>
                     </div>
                 </div>
@@ -127,11 +128,11 @@
 <div id="container{{count}}">
      <div class="row">
         <div class="input-field col s6">
-            <input placeholder="" id="full_name{{count}}" type="text" class="validate">
+            <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
             <label for="full_name">ADD TEAM MEMBER</label>
         </div>
         <div class="input-field col s6">
-            <select id="tSize">
+            <select name = "tSize{{count}}" id="tSize{{count}}">
                 <option>Select one</option>
                 <option value="s">S</option>
                 <option value="m">M</option>
@@ -150,11 +151,11 @@
 <template name="single">
 <div class="row">
     <div class="input-field col s6">
-        <input id="full_name{{count}}" type="text" class="validate">
+        <input name="fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
         <label for="full_name">FULL NAME</label>
     </div>
     <div class="input-field col s6">
-        <select id="tSize">
+        <select name = "tSize{{count}}" id="tSize">
             <option>Select one</option>
             <option value="s">S</option>
             <option value="m">M</option>
