@@ -1,4 +1,4 @@
-Session.setDefault('memberCount',1);
+Session.setDefault('memberCount',5);
 
 Template.body.onRendered(function() {
     $('select').material_select();
@@ -47,14 +47,17 @@ Template.body.events({
 			participant[res[i].name] = res[i].value;
 		}
 		console.log(participant);
+		var price = Session.get('price')*100;
         var handler = PaystackPop.setup({
             key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
             email: 'thepixelbank@3wp.io',
-            amount: 1000000,
+            amount: price,
             ref: Date(),
             callback: function(response){
               console.log('Success. transaction ref is ' + response.trxref);
-              
+			//    		Bookings.insert({
+			// 	email: booking['email'],		
+			// })
               alert('Reg complete.Thank you');
               // Router.go('/viewOrder/'+orderId);
             },
@@ -63,23 +66,14 @@ Template.body.events({
         }
         });
         handler.openIframe();
-		alert('Registered!');
 	},
 	'click .reset': function(event){
 		//event.preventDefault();		
         if( ! confirm("Are you sure you want to do this?") ){
             e.preventDefault();
         } else {
-            Session.set('memberCount',1);
+            Session.set('memberCount',5);
         }
-	},
-	'click .toTeam': function(event){
-		event.preventDefault();
-		Session.set("team",true);
-		Session.set('memberCount',1);
-
-		//document.location.reload(true);
-
 	},
 	'click .toIndiv': function(event){
 		event.preventDefault();
@@ -113,7 +107,19 @@ Template.body.helpers({
 	      countArr.push({});
 	    }
 	    return countArr;
-	  }
+  	},
+  	price: function(){
+  		if (Session.get('team')){
+	  		mCount = Session.get('memberCount');
+	  		currPrice = 4000*mCount;
+  		}
+  		else {
+  			currPrice = 10000;
+  		}
+  		Session.set('price',currPrice);
+  		return currPrice;
+
+  	}
 })
 
 Template.member.helpers({
