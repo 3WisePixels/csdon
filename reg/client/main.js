@@ -69,7 +69,6 @@ Template.mainReg.events({
         });
         handler.openIframe();
         //Should below go into onClose()?
-		alert('Registered!');
 	},
 	'click .reset': function(event){
 		//event.preventDefault();		
