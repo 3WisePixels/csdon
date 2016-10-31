@@ -24,3 +24,4 @@ session@1.1.7
 u2622:persistent-session
 aslagle:reactive-table
 iron:router
+materialize:materialize@=0.97.6
