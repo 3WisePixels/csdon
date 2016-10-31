@@ -1,6 +1,6 @@
-Session.setDefault('memberCount',1);
+Session.setDefault('memberCount',5);
 
-Template.body.onRendered(function() {
+Template.mainReg.onRendered(function() {
     $('select').material_select();
     selection = Session.get('team');
 	if (selection) {
@@ -24,7 +24,7 @@ Template.single.onRendered(function() {
 	}
 });
 
-Template.body.events({
+Template.mainReg.events({
 	'change #reg_type': function (event, template) {
 		selection = event.currentTarget.value;
 		console.log(selection);
@@ -47,15 +47,20 @@ Template.body.events({
 			participant[res[i].name] = res[i].value;
 		}
 		console.log(participant);
+		var price = Session.get('price')*100;
         var handler = PaystackPop.setup({
             key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
             email: 'thepixelbank@3wp.io',
-            amount: 1000000,
+            amount: price,
             ref: Date(),
             callback: function(response){
               console.log('Success. transaction ref is ' + response.trxref);
               
               alert('Registration complete. Check your email for confirmation. Thanks for your support!');
+			//    		Bookings.insert({
+			// 	email: booking['email'],		
+			// })
+    
               // Router.go('/viewOrder/'+orderId);
             },
             onClose: function(){
@@ -63,7 +68,6 @@ Template.body.events({
         }
         });
         handler.openIframe();
-        
         //Should below go into onClose()?
 		alert('Registered!');
 	},
@@ -72,16 +76,8 @@ Template.body.events({
         if( ! confirm("Are you sure you want to do this?") ){
             e.preventDefault();
         } else {
-            Session.set('memberCount',1);
+            Session.set('memberCount',5);
         }
-	},
-	'click .toTeam': function(event){
-		event.preventDefault();
-		Session.set("team",true);
-		Session.set('memberCount',1);
-
-		//document.location.reload(true);
-
 	},
 	'click .toIndiv': function(event){
 		event.preventDefault();
@@ -102,7 +98,7 @@ Template.body.events({
 	},
 })
 
-Template.body.helpers({
+Template.mainReg.helpers({
 	team: function(){
 		return Session.get('team');
 	},
@@ -115,7 +111,19 @@ Template.body.helpers({
 	      countArr.push({});
 	    }
 	    return countArr;
-	  }
+  	},
+  	price: function(){
+  		if (Session.get('team')){
+	  		mCount = Session.get('memberCount');
+	  		currPrice = 4000*mCount;
+  		}
+  		else {
+  			currPrice = 10000;
+  		}
+  		Session.set('price',currPrice);
+  		return currPrice;
+
+  	}
 })
 
 Template.member.helpers({
