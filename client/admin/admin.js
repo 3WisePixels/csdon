@@ -1,5 +1,5 @@
 Template.admin.helpers({
-//    myCollection: function () {
-//        return myCollection;
-//    }
+   myCollection: function () {
+       return Registrations;
+   }
 });
