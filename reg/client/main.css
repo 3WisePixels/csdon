@@ -54,7 +54,7 @@ body{
     font-size:0.9em;
 }
 .ordTtl img{
-    width:5%;
+    width:23px;
     margin:0 1%;
 }
 .ordTtl b{
@@ -68,6 +68,12 @@ body{
     width:100%;
     font-size:1.2em;
     font-weight:600;
+    margin:2% 0;
+}
+.payBtn .securePay{
+    
+}
+.payBtn .latePay{
     background:#005778;
 }
 .mainBg>.row>.s7{

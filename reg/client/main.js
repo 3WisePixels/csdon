@@ -37,7 +37,7 @@ Template.body.events({
 			Session.set("team",false);
 		}
   	},
-	'click .payBtn': function(event) {
+	'click .securePay': function(event) {
 		event.preventDefault();
 		participant = {};
 		res = document.getElementById('regForm').elements;
@@ -55,7 +55,7 @@ Template.body.events({
             callback: function(response){
               console.log('Success. transaction ref is ' + response.trxref);
               
-              alert('Reg complete.Thank you');
+              alert('Registration complete. Check your email for confirmation. Thanks for your support!');
               // Router.go('/viewOrder/'+orderId);
             },
             onClose: function(){
@@ -63,6 +63,8 @@ Template.body.events({
         }
         });
         handler.openIframe();
+        
+        //Should below go into onClose()?
 		alert('Registered!');
 	},
 	'click .reset': function(event){
