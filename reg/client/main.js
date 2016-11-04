@@ -1,10 +1,14 @@
-Session.setDefault('memberCount',5);
+Session.setDefault('memberCount',10);
 
+Template.mainReg.onCreated(function() {
+	Meteor.subscribe('registrations');
+})
 Template.mainReg.onRendered(function() {
     $('select').material_select();
     selection = Session.get('team');
 	if (selection) {
     	document.getElementById('reg_type').value='TEAM';
+		Session.set("children",0);
 	}
 	else {
 	    document.getElementById('reg_type').value='INDIVIDUAL';
@@ -37,8 +41,49 @@ Template.mainReg.events({
 			Session.set("team",false);
 		}
   	},
+	'change #children': function (event, template) {
+		selection = event.currentTarget.value;
+		console.log(selection);
+		if (selection == '') {
+			Session.set("children",0);
+		}
+		else {
+			//document.location.reload(true);
+			Session.set("children",selection);
+		}
+  	},
+
+  	'click .latePay': function(event){
+  		event.preventDefault();
+		participant = {};
+		res = document.getElementById('regForm').elements;
+		console.log(res);
+		for (i=0; i<res.length; i++) {
+			console.log(res[i].value);
+			participant[res[i].name] = res[i].value;
+		}
+		console.log(participant);
+		var price = Session.get('price')*1;
+		reg = Registrations.batchInsert([participant]);
+		console.log(reg);
+
+
+		// res.forEach(doc => {
+		// 	console.log(doc);
+		//   // Collection.insert(doc);
+		// });
+
+		// for (i=0; i<res.length; i++) {
+		// 	console.log(res[i].value);
+		// 	participant[res[i].name] = res[i].value;
+		// }
+
+  	},
 	'click .securePay': function(event) {
-		event.preventDefault();
+		//event.preventDefault();
+		// console.log(event.target.validity.valid);
+		// console.log(event);
+
 		participant = {};
 		res = document.getElementById('regForm').elements;
 		console.log(res);
@@ -48,6 +93,8 @@ Template.mainReg.events({
 		}
 		console.log(participant);
 		var price = Session.get('price')*100;
+		if (error) {
+		}
         var handler = PaystackPop.setup({
             key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
             email: 'thepixelbank@3wp.io',
@@ -115,6 +162,11 @@ Template.mainReg.helpers({
   		if (Session.get('team')){
 	  		mCount = Session.get('memberCount');
 	  		currPrice = 4000*mCount;
+  			childrenTotal = 2000*Session.get('children');
+  			if (isNaN(childrenTotal)){
+  				childrenTotal = 0;
+  			}
+  			currPrice += childrenTotal;		
   		}
   		else {
   			currPrice = 6000;

@@ -8,7 +8,7 @@
                 </p>
 
                 {{#if team}}
-                <h4 class="pgTitle">REGISTER FOR RUN  -  TEAM (5 minimum)</h4>
+                <h4 class="pgTitle">REGISTER FOR RUN  -  TEAM (10 minimum)</h4>
                 <a class="reset waves-effect waves-light btn right"><i class="material-icons right">replay</i>RESET FORM</a>
 
                  <div class="row">
@@ -26,6 +26,10 @@
                     {{/each}}
                         <a class="addMember btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                 <div class="row">
+                <div class="input-field col s12">
+                    <input type="number" name="children" id="children" min=0>
+                    <label for="children">Number of children</label>
+                </div>
                     <div class="input-field col s12">
                         <input name="teamName" id="team_name" type="text" class="validate">
                         <label for="team_name">TEAM NAME</label>
