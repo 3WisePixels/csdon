@@ -31,7 +31,7 @@
                     <label for="children">Number of children</label>
                 </div>
                     <div class="input-field col s12">
-                        <input name="teamName" id="team_name" type="text" class="validate">
+                        <input name="teamName" id="team_name" type="text" class="validate" required>
                         <label for="team_name">TEAM NAME</label>
                     </div>
                 </div>
@@ -53,7 +53,7 @@
                 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name ="address" id="address" type="text" class="validate">
+                        <input name ="address" id="address" type="text" class="validate" required>
                         <label for="address" data-success="It helps our outreach to know the demographics of our supporters.">ADDRESS</label>
 <!--
                         <div class="input-field col s6">
@@ -75,7 +75,7 @@
                 </div>
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name ="email" id="email" type="email" class="validate">
+                        <input name ="email" id="email" type="email" class="validate" required>
                         <label data-error="Please enter a valid email so we can contact you about the run." data-success="Thanks! We don't share your personal info." for="email">EMAIL</label>
                     </div>
                 </div>
@@ -103,11 +103,11 @@
 <div id="container{{count}}">
      <div class="row">
         <div class="input-field col s6">
-            <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
+            <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate" required>
             <label for="full_name">ADD TEAM MEMBER</label>
         </div>
         <div class="input-field col s6">
-            <select name = "tSize{{count}}" id="tSize{{count}}">
+            <select name = "tSize{{count}}" id="tSize{{count}}" required>
                 <option>Select one</option>
                 <option value="s">S</option>
                 <option value="m">M</option>
@@ -115,7 +115,7 @@
                 <option value="xl">XL</option>
                 <option value="xxl">XXL</option>
             </select>
-            <label for="tSize">T-SHIRT SIZE</label>
+            <label for="tSize" data-error="Please select a t-shirt size.">T-SHIRT SIZE</label>
         </div>
 
     </div>
@@ -127,7 +127,7 @@
 <template name="single">
 <div class="row">
     <div class="input-field col s6">
-        <input name="fullName{{count}}" id="full_name{{count}}" type="text" class="validate">
+        <input name="fullName{{count}}" id="full_name{{count}}" type="text" class="validate" required>
         <label for="full_name">FULL NAME</label>
     </div>
     <div class="input-field col s6">
@@ -139,7 +139,7 @@
             <option value="xl">XL</option>
             <option value="xxl">XXL</option>
         </select>
-        <label for="tSize">T-SHIRT SIZE</label>
+        <label for="tSize" data-error="Please select a t-shirt size.">T-SHIRT SIZE</label>
     </div>
 </div>
 </template>
