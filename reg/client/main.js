@@ -117,7 +117,7 @@ Template.mainReg.helpers({
 	  		currPrice = 4000*mCount;
   		}
   		else {
-  			currPrice = 10000;
+  			currPrice = 6000;
   		}
   		Session.set('price',currPrice);
   		return currPrice;
