@@ -1,10 +1,14 @@
-Session.setDefault('memberCount',5);
+Session.setDefault('memberCount',10);
 
+Template.mainReg.onCreated(function() {
+	Meteor.subscribe('registrations');
+})
 Template.mainReg.onRendered(function() {
     $('select').material_select();
     selection = Session.get('team');
 	if (selection) {
     	document.getElementById('reg_type').value='TEAM';
+		Session.set("children",0);
 	}
 	else {
 	    document.getElementById('reg_type').value='INDIVIDUAL';
@@ -37,14 +41,64 @@ Template.mainReg.events({
 			Session.set("team",false);
 		}
   	},
-	'click .securePay': function(event) {
-		event.preventDefault();
+	'change #children': function (event, template) {
+		selection = event.currentTarget.value;
+		console.log(selection);
+		if (selection == '') {
+			Session.set("children",0);
+		}
+		else {
+			//document.location.reload(true);
+			Session.set("children",selection);
+		}
+  	},
+
+  	'click .latePay': function(event){
+  		event.preventDefault();
 		participant = {};
 		res = document.getElementById('regForm').elements;
 		console.log(res);
 		for (i=0; i<res.length; i++) {
 			console.log(res[i].value);
 			participant[res[i].name] = res[i].value;
+		}
+		console.log(participant);
+		var price = Session.get('price')*1;
+		reg = Registrations.batchInsert([participant]);
+		console.log(reg);
+
+
+		// res.forEach(doc => {
+		// 	console.log(doc);
+		//   // Collection.insert(doc);
+		// });
+
+		// for (i=0; i<res.length; i++) {
+		// 	console.log(res[i].value);
+		// 	participant[res[i].name] = res[i].value;
+		// }
+
+  	},
+	'click .securePay': function(event) {
+		event.preventDefault();
+		// console.log(event.target.validity.valid);
+		// console.log(event);
+
+		participant = {};
+		regForm = document.getElementById('regForm');
+
+
+		res = regForm.elements;
+		console.log(res);
+		for (i=0; i<res.length; i++) {
+			currVal = res[i];
+			if (currVal.checkValidity() == false) {
+        		alert('Please fill out '+res[i].name);
+        		return false;
+		    } else {
+		    	console.log('Form success');
+				participant[res[i].name] = res[i].value;
+			}
 		}
 		console.log(participant);
 		var price = Session.get('price')*100;
@@ -54,18 +108,13 @@ Template.mainReg.events({
             amount: price,
             ref: Date(),
             callback: function(response){
-              console.log('Success. transaction ref is ' + response.trxref);
-              
-              alert('Registration complete. Check your email for confirmation. Thanks for your support!');
-			//    		Bookings.insert({
-			// 	email: booking['email'],		
-			// })
-    
-              // Router.go('/viewOrder/'+orderId);
+          	console.log('Success. transaction ref is ' + response.trxref); 
+          	alert('Registration complete. Thanks for your support!');
+  			reg = Registrations.batchInsert([participant]);
             },
             onClose: function(){
             	
-        }
+        	}
         });
         handler.openIframe();
         //Should below go into onClose()?
@@ -115,9 +164,14 @@ Template.mainReg.helpers({
   		if (Session.get('team')){
 	  		mCount = Session.get('memberCount');
 	  		currPrice = 4000*mCount;
+  			childrenTotal = 2000*Session.get('children');
+  			if (isNaN(childrenTotal)){
+  				childrenTotal = 0;
+  			}
+  			currPrice += childrenTotal;		
   		}
   		else {
-  			currPrice = 10000;
+  			currPrice = 6000;
   		}
   		Session.set('price',currPrice);
   		return currPrice;

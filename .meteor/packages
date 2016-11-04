@@ -25,3 +25,4 @@ u2622:persistent-session
 aslagle:reactive-table
 iron:router
 materialize:materialize@=0.97.6
+mikowals:batch-insert
