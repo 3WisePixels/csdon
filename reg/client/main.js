@@ -80,39 +80,41 @@ Template.mainReg.events({
 
   	},
 	'click .securePay': function(event) {
-		//event.preventDefault();
+		event.preventDefault();
 		// console.log(event.target.validity.valid);
 		// console.log(event);
 
 		participant = {};
-		res = document.getElementById('regForm').elements;
+		regForm = document.getElementById('regForm');
+
+
+		res = regForm.elements;
 		console.log(res);
 		for (i=0; i<res.length; i++) {
-			console.log(res[i].value);
-			participant[res[i].name] = res[i].value;
+			currVal = res[i];
+			if (currVal.checkValidity() == false) {
+        		alert('Please fill out '+res[i].name);
+        		return false;
+		    } else {
+		    	console.log('Form success');
+				participant[res[i].name] = res[i].value;
+			}
 		}
 		console.log(participant);
 		var price = Session.get('price')*100;
-		if (error) {
-		}
         var handler = PaystackPop.setup({
             key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
             email: 'thepixelbank@3wp.io',
             amount: price,
             ref: Date(),
             callback: function(response){
-              console.log('Success. transaction ref is ' + response.trxref);
-              
-              alert('Registration complete. Check your email for confirmation. Thanks for your support!');
-			//    		Bookings.insert({
-			// 	email: booking['email'],		
-			// })
-    
-              // Router.go('/viewOrder/'+orderId);
+          	console.log('Success. transaction ref is ' + response.trxref); 
+          	alert('Registration complete. Thanks for your support!');
+  			reg = Registrations.batchInsert([participant]);
             },
             onClose: function(){
             	
-        }
+        	}
         });
         handler.openIframe();
         //Should below go into onClose()?
