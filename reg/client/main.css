@@ -76,8 +76,17 @@ body{
 .payBtn .latePay{
     background:#005778;
 }
+/*
+.mainBg>.row>.s7 .flyrBg{
+    background:rgba(222,222,222,0.6);
+    padding:5%;
+}
+.mainBg>.row>.s7 .flyrBg img{
+    width:15%;
+}
+*/
 .mainBg>.row>.s7{
-    padding:39% 0 0 11%;
+    padding:42% 0 0 11%;
 }
 .reset{
     background:#960018;
