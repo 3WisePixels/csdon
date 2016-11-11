@@ -109,7 +109,7 @@ Template.mainReg.events({
             ref: Date(),
             callback: function(response){
           	console.log('Success. transaction ref is ' + response.trxref); 
-          	alert('Registration complete. Thanks for your support!');
+          	alert('Registration complete. We will contact you shortly. Thanks for your support!');
   			reg = Registrations.batchInsert([participant]);
             },
             onClose: function(){
