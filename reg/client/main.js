@@ -3,6 +3,9 @@ Session.setDefault('memberCount',10);
 Template.mainReg.onCreated(function() {
 	Meteor.subscribe('registrations');
 })
+Template.admin.onCreated(function() {
+	Meteor.subscribe('registrations');
+})
 Template.mainReg.onRendered(function() {
     $('select').material_select();
     selection = Session.get('team');
@@ -168,6 +171,11 @@ Template.mainReg.helpers({
   		}
   		else {
   			currPrice = 5000;
+  			childrenTotal = 2000*Session.get('children');
+  			if (isNaN(childrenTotal)){
+  				childrenTotal = 0;
+  			}
+  			currPrice += childrenTotal;	
   		}
   		Session.set('price',currPrice);
   		return currPrice;
