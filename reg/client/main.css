@@ -62,7 +62,7 @@ body{
     color:#004d40;
 }
 .payBtn{
-    padding-left:12% !important;
+    padding:0 3% !important;
 }
 .payBtn .btn{
     width:100%;
@@ -251,4 +251,10 @@ label[for=phone] i{
   90% {
     stroke: #ffa700;
   }
+}
+
+@media (max-width:768px){
+    #regForm{
+        width:100%;
+    }
 }
