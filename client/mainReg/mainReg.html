@@ -26,10 +26,7 @@
                     {{/each}}
                         <a class="addMember btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                 <div class="row">
-                <div class="input-field col s12">
-                    <input type="number" name="children" id="children" min=0>
-                    <label for="children">Number of children</label>
-                </div>
+                
                     <div class="input-field col s12">
                         <input name="teamName" id="team_name" type="text" class="validate" required>
                         <label for="team_name">TEAM NAME</label>
@@ -57,10 +54,10 @@
                         <label for="address" data-success="It helps our outreach to know the demographics of our supporters.">ADDRESS</label>
 <!--
                         <div class="input-field col s6">
-                            <input placeholder="City" name ="city" id="city" type="text" class="validate">
+                            <input placeholder="City" name ="city" id="city" type="text" class="validate" required>
                         </div>
                         <div class="input-field col s6">
-                            <input placeholder="State" name ="state" id="state" type="text" class="validate">
+                            <input placeholder="State" name ="state" id="state" type="text" class="validate" required>
                         </div>
 -->
                         
@@ -69,7 +66,7 @@
                 
                 <div class="row">
                     <div class="input-field col s12">
-                        <input name ="phone" id="phone" type="text" pattern="^\d{11}|\d{9}$" required class="validate">
+                        <input name ="phone" id="phone" type="text" pattern="^\d{11}|\d{9}$" class="validate" required>
                         <label for="phone" data-error="Please enter a valid phone number." data-success="Thanks! We don't share your personal info.">PHONE <i>(mobile 11 digits | landline 9 digits)</i></label>
                     </div>
                 </div>
@@ -77,6 +74,10 @@
                     <div class="input-field col s12">
                         <input name ="email" id="email" type="email" class="validate" required>
                         <label data-error="Please enter a valid email so we can contact you about the run." data-success="Thanks! We don't share your personal info." for="email">EMAIL</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="number" name="children" id="children" min=0>
+                        <label for="children">Number of children</label>
                     </div>
                 </div>
                 <div class="row">
@@ -92,6 +93,7 @@
             </form>
             
             <div class="col s7">
+<!--                <div class="flyrBg"><img src="/assets/flyer.jpg"></div>-->
                 <img src="/assets/cslogo.png" width="">
                 <img src="/assets/rfclogo.png" height="150">
             </div>
@@ -107,7 +109,7 @@
             <label for="full_name">ADD TEAM MEMBER</label>
         </div>
         <div class="input-field col s6">
-            <select name = "tSize{{count}}" id="tSize{{count}}" required>
+            <select name = "tSize{{count}}" id="tSize{{count}}">
                 <option>Select one</option>
                 <option value="s">S</option>
                 <option value="m">M</option>
@@ -115,7 +117,7 @@
                 <option value="xl">XL</option>
                 <option value="xxl">XXL</option>
             </select>
-            <label for="tSize" data-error="Please select a t-shirt size.">T-SHIRT SIZE</label>
+            <label for="tSize">T-SHIRT SIZE</label>
         </div>
 
     </div>
@@ -139,7 +141,7 @@
             <option value="xl">XL</option>
             <option value="xxl">XXL</option>
         </select>
-        <label for="tSize" data-error="Please select a t-shirt size.">T-SHIRT SIZE</label>
+        <label for="tSize">T-SHIRT SIZE</label>
     </div>
 </div>
 </template>

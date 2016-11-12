@@ -18,6 +18,7 @@ es5-shim@4.6.15                # ECMAScript 5 compatibility for older browsers.
 ecmascript@0.5.9              # Enable ECMAScript2015+ syntax in app code
 shell-server@0.2.1            # Server-side component of the `meteor shell` command
 
+
 fourseven:scss
 msavin:mongol
 session@1.1.7
@@ -26,3 +27,4 @@ aslagle:reactive-table
 iron:router
 materialize:materialize@=0.97.6
 mikowals:batch-insert
+less@2.7.7

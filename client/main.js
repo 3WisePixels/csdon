@@ -3,6 +3,9 @@ Session.setDefault('memberCount',10);
 Template.mainReg.onCreated(function() {
 	Meteor.subscribe('registrations');
 })
+Template.admin.onCreated(function() {
+	Meteor.subscribe('registrations');
+})
 Template.mainReg.onRendered(function() {
     $('select').material_select();
     selection = Session.get('team');
@@ -103,13 +106,13 @@ Template.mainReg.events({
 		console.log(participant);
 		var price = Session.get('price')*100;
         var handler = PaystackPop.setup({
-            key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
-            email: 'thepixelbank@3wp.io',
+            key: 'pk_live_bc32ba513cc77d0456fd1e3befd133af0306a136',
+            email: 'contact@csdon.org',
             amount: price,
             ref: Date(),
             callback: function(response){
           	console.log('Success. transaction ref is ' + response.trxref); 
-          	alert('Registration complete. Thanks for your support!');
+          	alert('Registration complete. We will contact you shortly. Thanks for your support!');
   			reg = Registrations.batchInsert([participant]);
             },
             onClose: function(){
@@ -124,7 +127,7 @@ Template.mainReg.events({
         if( ! confirm("Are you sure you want to do this?") ){
             e.preventDefault();
         } else {
-            Session.set('memberCount',5);
+            Session.set('memberCount',10);
         }
 	},
 	'click .toIndiv': function(event){
@@ -135,10 +138,6 @@ Template.mainReg.events({
 	},
 	'click .addMember': function(event) {
 		event.preventDefault();
-		if (Session.get('memberCount')==10){
-			alert('Max number of members added');
-			return false;
-		}
 		currCount = Session.get('memberCount');
 		currCount += 1;
 		Session.set('memberCount',currCount);
@@ -163,7 +162,7 @@ Template.mainReg.helpers({
   	price: function(){
   		if (Session.get('team')){
 	  		mCount = Session.get('memberCount');
-	  		currPrice = 4000*mCount;
+	  		currPrice = 3500*mCount;
   			childrenTotal = 2000*Session.get('children');
   			if (isNaN(childrenTotal)){
   				childrenTotal = 0;
@@ -171,7 +170,12 @@ Template.mainReg.helpers({
   			currPrice += childrenTotal;		
   		}
   		else {
-  			currPrice = 6000;
+  			currPrice = 5000;
+  			childrenTotal = 2000*Session.get('children');
+  			if (isNaN(childrenTotal)){
+  				childrenTotal = 0;
+  			}
+  			currPrice += childrenTotal;	
   		}
   		Session.set('price',currPrice);
   		return currPrice;
