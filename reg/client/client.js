@@ -28,3 +28,11 @@ Template.registerHelper('log',function(obj){
     return obj;
 });
 
+// Template.registerHelper('date',function(obj){
+// 	rid = this._id;
+// 	const generatedId = new Mongo.ObjectID()._str
+// 	console.log(typeof rid);
+// 	var id = new Meteor.Collection.ObjectID(this._id).getTimestamp();
+
+//     return objId;
+// });
