@@ -11,7 +11,7 @@ body,html{
     height:100%;
     font-family:Brandon;
 }
-body{
+.mnDv{
     background:#f2f2f2 url(/assets/mnBg.png) no-repeat right top;
     background-size:contain;
 }

@@ -24,13 +24,25 @@
 <script src="https://js.paystack.co/v1/inline.js"></script>
 
 </head>
-<body></body>
+<body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        setTimeout(function(){
+            $('#xLoader').addClass('xGo');
+        },3333)
+    })
+</script>
+
+</body>
 
 
 <template name="mainLayout">
     <!-- GoogleSpin -->
 	<div id="xLoader"><p>Welcome!</p><div class="google-spin-wrapper"><div class="google-spin"></div></div></div>
-{{>yield}}
+    <div class="mnDv">
+        {{>yield}}
+    </div>
+    
 </template>
 <template name="loading">
     <div class="showbox">

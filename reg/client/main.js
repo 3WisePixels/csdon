@@ -1,11 +1,5 @@
 Session.setDefault('memberCount',10);
 
-Template.mainLayout.onRendered(function(){
-    setTimeout(function(){
-        $('#xLoader').addClass('xGo');
-    },3333)
-});
-
 Template.mainReg.onCreated(function() {
 	Meteor.subscribe('registrations');
 })
