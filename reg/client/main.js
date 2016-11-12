@@ -124,7 +124,7 @@ Template.mainReg.events({
         if( ! confirm("Are you sure you want to do this?") ){
             e.preventDefault();
         } else {
-            Session.set('memberCount',5);
+            Session.set('memberCount',10);
         }
 	},
 	'click .toIndiv': function(event){
@@ -135,10 +135,6 @@ Template.mainReg.events({
 	},
 	'click .addMember': function(event) {
 		event.preventDefault();
-		if (Session.get('memberCount')==10){
-			alert('Max number of members added');
-			return false;
-		}
 		currCount = Session.get('memberCount');
 		currCount += 1;
 		Session.set('memberCount',currCount);
@@ -163,7 +159,7 @@ Template.mainReg.helpers({
   	price: function(){
   		if (Session.get('team')){
 	  		mCount = Session.get('memberCount');
-	  		currPrice = 4000*mCount;
+	  		currPrice = 3500*mCount;
   			childrenTotal = 2000*Session.get('children');
   			if (isNaN(childrenTotal)){
   				childrenTotal = 0;
@@ -171,7 +167,7 @@ Template.mainReg.helpers({
   			currPrice += childrenTotal;		
   		}
   		else {
-  			currPrice = 6000;
+  			currPrice = 5000;
   		}
   		Session.set('price',currPrice);
   		return currPrice;
