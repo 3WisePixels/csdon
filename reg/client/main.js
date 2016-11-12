@@ -103,8 +103,8 @@ Template.mainReg.events({
 		console.log(participant);
 		var price = Session.get('price')*100;
         var handler = PaystackPop.setup({
-            key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
-            email: 'thepixelbank@3wp.io',
+            key: 'pk_live_bc32ba513cc77d0456fd1e3befd133af0306a136',
+            email: 'contact@csdon.org',
             amount: price,
             ref: Date(),
             callback: function(response){
