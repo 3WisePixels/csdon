@@ -1,0 +1,147 @@
+<template name="mainReg">
+<section class="mainBg">
+        
+        <div class="row">
+            <form id="regForm" class="col s5" style="padding-left:0">
+                <p><a class="backA" href="http://www.runforcure.org/" target="_blank"><i class="material-icons">swap_horiz</i><b>BACK TO</b> &nbsp;RUNFORCURE.ORG</a>
+                <a class="backA" href="http://www.csdon.org/" target="_blank"><i class="material-icons">language</i><b>GO TO</b> &nbsp;CSDON.ORG</a>
+                </p>
+
+                {{#if team}}
+                <h4 class="pgTitle">REGISTER FOR RUN  -  TEAM (10 minimum)</h4>
+                <a class="reset waves-effect waves-light btn right"><i class="material-icons right">reset</i>RESET FORM</a>
+
+                 <div class="row">
+                    <div class="input-field col s12">
+                        <select name ="regType" id="reg_type">
+                            <option>TEAM</option>
+                            <option>INDIVIDUAL</option>
+                        </select>
+                        <label>REGISTERING AS:</label>
+                    </div>
+                </div> 
+
+                    {{#each loopCount memberCount}}
+                        {{>member count=@index}}
+                    {{/each}}
+                        <a class="addMember btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
+                <div class="row">
+                
+                    <div class="input-field col s12">
+                        <input name="teamName" id="team_name" type="text" class="validate" required>
+                        <label for="team_name">TEAM NAME</label>
+                    </div>
+                </div>
+                {{else}}
+                <h4 class="pgTitle">REGISTER FOR RUN  -  INDIVIDUAL</h4>
+                 <div class="row">
+                    <div class="input-field col s12">
+                        <select name ="regType" id="reg_type">
+                            <option>INDIVIDUAL</option>
+                            <option>TEAM</option>
+                        </select>
+                        <label>REGISTERING AS:</label>
+                    </div>
+                </div>
+                
+                {{>single}}
+                {{/if}}
+                
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name ="address" id="address" type="text" class="validate" required>
+                        <label for="address" data-success="It helps our outreach to know the demographics of our supporters.">ADDRESS</label>
+<!--
+                        <div class="input-field col s6">
+                            <input placeholder="City" name ="city" id="city" type="text" class="validate" required>
+                        </div>
+                        <div class="input-field col s6">
+                            <input placeholder="State" name ="state" id="state" type="text" class="validate" required>
+                        </div>
+-->
+                        
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name ="phone" id="phone" type="text" pattern="^\d{11}|\d{9}$" class="validate" required>
+                        <label for="phone" data-error="Please enter a valid phone number." data-success="Thanks! We don't share your personal info.">PHONE <i>(mobile 11 digits | landline 9 digits)</i></label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input name ="email" id="email" type="email" class="validate" required>
+                        <label data-error="Please enter a valid email so we can contact you about the run." data-success="Thanks! We don't share your personal info." for="email">EMAIL</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input type="number" name="children" id="children" min=0>
+                        <label for="children">Number of children</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col s12 ordTtl">
+                        TOTAL: <img src="/assets/naira.png"><b>{{price}}</b>  
+                        <p>Thank you for your contribution and continued support!</p>
+                    </div>
+                </div>
+                <div class="payBtn">
+                    <button class="btn waves-effect waves-light securePay">SECURE PAY <i class="material-icons dp48">lock</i></button>
+<!--                    <button class="btn waves-effect waves-light latePay">PAY LATER</button>-->
+                </div>
+            </form>
+            
+            <div class="col s7">
+<!--                <div class="flyrBg"><img src="/assets/flyer.jpg"></div>-->
+                <img src="/assets/cslogo.png" width="">
+                <img src="/assets/rfclogo.png" height="150">
+            </div>
+        </div>
+    </section>
+</template>    
+    
+<template name="member">
+<div id="container{{count}}">
+     <div class="row">
+        <div class="input-field col s6">
+            <input placeholder="" name = "fullName{{count}}" id="full_name{{count}}" type="text" class="validate" required>
+            <label for="full_name">ADD TEAM MEMBER</label>
+        </div>
+        <div class="input-field col s6">
+            <select name = "tSize{{count}}" id="tSize{{count}}">
+                <option>Select one</option>
+                <option value="s">S</option>
+                <option value="m">M</option>
+                <option value="l">L</option>
+                <option value="xl">XL</option>
+                <option value="xxl">XXL</option>
+            </select>
+            <label for="tSize">T-SHIRT SIZE</label>
+        </div>
+
+    </div>
+    
+    <!-- <button class="removeMember" id="{{count}}del">-</button> -->
+</div>
+</template>
+
+<template name="single">
+<div class="row">
+    <div class="input-field col s6">
+        <input name="fullName{{count}}" id="full_name{{count}}" type="text" class="validate" required>
+        <label for="full_name">FULL NAME</label>
+    </div>
+    <div class="input-field col s6">
+        <select name = "tSize{{count}}" id="tSize">
+            <option>Select one</option>
+            <option value="s">S</option>
+            <option value="m">M</option>
+            <option value="l">L</option>
+            <option value="xl">XL</option>
+            <option value="xxl">XXL</option>
+        </select>
+        <label for="tSize">T-SHIRT SIZE</label>
+    </div>
+</div>
+</template>
