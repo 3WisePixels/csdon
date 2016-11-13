@@ -1,5 +1,10 @@
 Session.setDefault('memberCount',10);
 
+Template.mainLayout.onRendered(function(){
+    setTimeout(function(){
+        $('#xLoader').addClass('xGo');
+    },2666)
+});
 Template.mainReg.onCreated(function() {
 	Meteor.subscribe('registrations');
 })
@@ -114,6 +119,7 @@ Template.mainReg.events({
           	console.log('Success. transaction ref is ' + response.trxref); 
           	alert('Registration complete. We will contact you shortly. Thanks for your support!');
   			reg = Registrations.batchInsert([participant]);
+            document.getElementById('regForm').reset();
             },
             onClose: function(){
             	
