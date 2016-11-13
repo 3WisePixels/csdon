@@ -28,3 +28,4 @@ iron:router
 materialize:materialize@=0.97.6
 mikowals:batch-insert
 less@2.7.7
+matb33:collection-hooks

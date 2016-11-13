@@ -46,6 +46,7 @@ launch-screen@1.1.0
 less@2.7.7
 livedata@1.0.18
 logging@1.1.16
+matb33:collection-hooks@0.8.4
 materialize:materialize@0.97.6
 meteor@1.6.0
 meteor-base@1.0.4

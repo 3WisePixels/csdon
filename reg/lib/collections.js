@@ -14,9 +14,14 @@ Registrations.allow({
 }
 });
 
+Registrations.before.insert(function (userId, doc) {
+  doc.createdAt = Date.now();
+});
+
 Meteor.publish('registrations', function() {
   return Registrations.find({},{});
 });
+
 }
 else {
 Registrations = new Mongo.Collection('registrations');
