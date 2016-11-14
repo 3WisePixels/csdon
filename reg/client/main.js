@@ -72,7 +72,7 @@ Template.mainReg.events({
 		}
 		console.log(participant);
 		var price = Session.get('price')*1;
-		reg = Registrations.batchInsert([participant]);
+		Meteor.call('reg',participant);
 		console.log(reg);
 
 
@@ -113,14 +113,14 @@ Template.mainReg.events({
         var handler = PaystackPop.setup({
             key: 'pk_live_bc32ba513cc77d0456fd1e3befd133af0306a136',
             email: 'contact@csdon.org',
-//            'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
-//            email: 'thepixelbank@3wp.io',
+			// key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
+			// email: 'thepixelbank@3wp.io',
             amount: price,
             ref: Date(),
             callback: function(response){
           	console.log('Success. transaction ref is ' + response.trxref); 
           	alert('Registration complete. We will contact you shortly. Thanks for your support!');
-  			reg = Registrations.batchInsert([participant]);
+			Meteor.call('reg',participant);
             document.getElementById('regForm').reset();
             },
             onClose: function(){
