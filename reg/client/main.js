@@ -178,7 +178,7 @@ Template.mainReg.helpers({
   	price: function(){
   		if (Session.get('team')){
 	  		mCount = Session.get('memberCount');
-	  		currPrice = 3500*mCount;
+	  		currPrice = 4500*mCount;
   			childrenTotal = 2000*Session.get('children');
   			if (isNaN(childrenTotal)){
   				childrenTotal = 0;
@@ -186,7 +186,7 @@ Template.mainReg.helpers({
   			currPrice += childrenTotal;
   		}
   		else {
-  			currPrice = 5000;
+  			currPrice = 6000;
   			childrenTotal = 2000*Session.get('children');
   			if (isNaN(childrenTotal)){
   				childrenTotal = 0;
