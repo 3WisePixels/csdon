@@ -124,7 +124,7 @@ Template.mainReg.events({
 			// key: 'pk_test_753de05a86cdf76562f7d65f503b2f90369fcf73',
 			// email: 'thepixelbank@3wp.io',
             amount: price,
-            ref: Date(),
+            ref: Date.now(),
             callback: function(response){
           	console.log('Success. transaction ref is ' + response.trxref);
           	alert('Registration complete. We will contact you shortly. Thanks for your support!');
@@ -196,6 +196,7 @@ Template.mainReg.helpers({
   		Session.set('price',currPrice);
         if (Session.get('games')){
             currPrice = 500+Session.get('price');
+            Session.set('price',currPrice);
         }
         return currPrice;
 
