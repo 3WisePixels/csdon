@@ -1,5 +1,5 @@
 Session.setDefault('memberCount',10);
-
+var addition = 0;
 Template.mainLayout.onRendered(function(){
     setTimeout(function(){
         $('#xLoader').addClass('xGo');
@@ -16,10 +16,12 @@ Template.mainReg.onRendered(function() {
     selection = Session.get('team');
 	if (selection) {
     	document.getElementById('reg_type').value='TEAM';
+    	addition = 500 * 10;
 		Session.set("children",0);
 	}
 	else {
 	    document.getElementById('reg_type').value='INDIVIDUAL';
+	    addition = 500;
 	}
     $('#gamesOpt').change(function(){
         if ($(this).is(":checked")){
@@ -49,10 +51,12 @@ Template.mainReg.events({
 		if (selection == 'TEAM') {
 			//document.location.reload(true);
 			Session.set("team",true);
+			addition = 500 * 10;
 		}
 		else {
 			//document.location.reload(true);
 			Session.set("team",false);
+			addition = 500;
 		}
   	},
 	'change #children': function (event, template) {
@@ -187,17 +191,16 @@ Template.mainReg.helpers({
   			}
   			currPrice += childrenTotal;
   		}
-  		Session.set('price',currPrice);
-  		var addition = 0;
-  		if (Session.get('team')) { 
-        		addition = 500 * 10; 
-        	}
-        	else {
-        		addition = 500;
-    	}
+  		// Session.set('price',currPrice);
+  		// if (Session.get('team')) { 
+    //     		addition = 500 * 10; 
+    //     	}
+    //     	else {
+    //     		addition = 500;
+    // 	}
+    	console.log(addition);
         if (Session.get('games')){
             currPrice = addition+Session.get('price');
-            Session.set('price',currPrice);
         }
         return currPrice;
 
