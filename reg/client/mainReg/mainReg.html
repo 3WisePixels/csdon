@@ -1,7 +1,7 @@
 <template name="mainReg">
 <section class="mainBg">
-        
-        <div class="row">
+
+        <div class="row" style="padding-left:3%;">
             <form id="regForm" class="col s5" style="padding-left:0">
                 <p><a class="backA" href="http://www.runforcure.org/" target="_blank"><i class="material-icons">swap_horiz</i><b>BACK TO</b> &nbsp;RUNFORCURE.ORG</a>
                 <a class="backA" href="http://www.csdon.org/" target="_blank"><i class="material-icons">language</i><b>GO TO</b> &nbsp;CSDON.ORG</a>
@@ -19,14 +19,14 @@
                         </select>
                         <label>REGISTERING AS:</label>
                     </div>
-                </div> 
+                </div>
 
                     {{#each loopCount memberCount}}
                         {{>member count=@index}}
                     {{/each}}
                         <a class="addMember btn-floating btn-large waves-effect waves-light right"><i class="material-icons">add</i></a>
                 <div class="row">
-                
+
                     <div class="input-field col s12">
                         <input name="teamName" id="team_name" type="text" class="validate" required>
                         <label for="team_name">TEAM NAME</label>
@@ -43,11 +43,11 @@
                         <label>REGISTERING AS:</label>
                     </div>
                 </div>
-                
+
                 {{>single}}
                 {{/if}}
-                
-                
+
+
                 <div class="row">
                     <div class="input-field col s12">
                         <input name ="address" id="address" type="text" class="validate" required>
@@ -60,10 +60,10 @@
                             <input placeholder="State" name ="state" id="state" type="text" class="validate" required>
                         </div>
 -->
-                        
+
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <div class="input-field col s12">
                         <input name ="phone" id="phone" type="text" pattern="^\d{11}|\d{9}$" class="validate" required>
@@ -81,8 +81,27 @@
                     </div>
                 </div>
                 <div class="row">
+                    <h5 class="">Were you referred by someone on Instagram or Twitter?</h5>
+                    <div class="input-field col s6">
+                        <input type="text" name="twitHandle" id="twitHandle" min=0>
+                        <label for="children">Twitter Handle</label>
+                    </div>
+                    <div class="input-field col s6">
+                        <input type="text" name="instaHandle" id="instaHandle" min=0>
+                        <label for="children">Instagram Handle</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <h5 class="">There'll also be games! Just <img id="smNair" src="/assets/naira.png">500 to participate!</h5>
+                    <div class="input-field col s6">
+                        <input type="checkbox" name="gamesOpt" id="gamesOpt" min=0>
+                        <label for="children">Count me in!</label>
+                    </div>
+
+                </div>
+                <div class="row">
                     <div class="col s12 ordTtl">
-                        TOTAL: <img src="/assets/naira.png"><b>{{price}}</b>  
+                        TOTAL: <img src="/assets/naira.png"><b>{{price}}</b>
                         <p>Thank you for your contribution and continued support!</p>
                     </div>
                 </div>
@@ -91,7 +110,7 @@
 <!--                    <button class="btn waves-effect waves-light latePay">PAY LATER</button>-->
                 </div>
             </form>
-            
+
             <div class="col s7">
 <!--                <div class="flyrBg"><img src="/assets/flyer.jpg"></div>-->
                 <img src="/assets/cslogo.png" width="">
@@ -99,8 +118,8 @@
             </div>
         </div>
     </section>
-</template>    
-    
+</template>
+
 <template name="member">
 <div id="container{{count}}">
      <div class="row">
@@ -121,7 +140,7 @@
         </div>
 
     </div>
-    
+
     <!-- <button class="removeMember" id="{{count}}del">-</button> -->
 </div>
 </template>

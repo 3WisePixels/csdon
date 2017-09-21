@@ -12,14 +12,14 @@ body,html{
     font-family:Brandon;
 }
 body{
-    
+
 }
 .mnDv{
     background:#f2f2f2 url(/assets/mnBg.png) no-repeat right top;
     background-size:contain;
 }
 .mainBg{
-    
+
     height:100%;
     padding:2.5% 0;
 }
@@ -74,10 +74,14 @@ body{
     margin:2% 0;
 }
 .payBtn .securePay{
-    
+
 }
 .payBtn .latePay{
     background:#005778;
+}
+#smNair{
+    width:3%;
+    display:inline-block;
 }
 /*
 .mainBg>.row>.s7 .flyrBg{
