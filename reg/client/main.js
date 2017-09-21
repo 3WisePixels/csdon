@@ -35,13 +35,6 @@ Template.mainReg.onRendered(function() {
 
 Template.single.onRendered(function() {
     $('select').material_select();
-    selection = Session.get('team');
-	if (selection) {
-    	document.getElementById('reg_type').value='TEAM';
-	}
-	else {
-	    document.getElementById('reg_type').value='INDIVIDUAL';
-	}
 });
 
 Template.mainReg.events({
@@ -191,7 +184,7 @@ Template.mainReg.helpers({
   			}
   			currPrice += childrenTotal;
   		}
-  		// Session.set('price',currPrice);
+  		Session.set('price',currPrice);
   		// if (Session.get('team')) { 
     //     		addition = 500 * 10; 
     //     	}
