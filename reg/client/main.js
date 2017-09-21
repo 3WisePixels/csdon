@@ -22,6 +22,14 @@ Template.mainReg.onRendered(function() {
 	    document.getElementById('reg_type').value='INDIVIDUAL';
 
 	}
+    $('#gamesOpt').change(function(){
+        if ($(this).is(":checked")){
+            Session.set('games',true);
+        }else{
+            Session.set('games',false);
+        }
+    })
+
 });
 
 Template.single.onRendered(function() {
@@ -118,20 +126,20 @@ Template.mainReg.events({
             amount: price,
             ref: Date(),
             callback: function(response){
-          	console.log('Success. transaction ref is ' + response.trxref); 
+          	console.log('Success. transaction ref is ' + response.trxref);
           	alert('Registration complete. We will contact you shortly. Thanks for your support!');
 			Meteor.call('reg',participant);
             document.getElementById('regForm').reset();
             },
             onClose: function(){
-            	
+
         	}
         });
         handler.openIframe();
         //Should below go into onClose()?
 	},
 	'click .reset': function(event){
-		//event.preventDefault();		
+		//event.preventDefault();
         if( ! confirm("Are you sure you want to do this?") ){
             e.preventDefault();
         } else {
@@ -175,7 +183,7 @@ Template.mainReg.helpers({
   			if (isNaN(childrenTotal)){
   				childrenTotal = 0;
   			}
-  			currPrice += childrenTotal;		
+  			currPrice += childrenTotal;
   		}
   		else {
   			currPrice = 5000;
@@ -183,10 +191,13 @@ Template.mainReg.helpers({
   			if (isNaN(childrenTotal)){
   				childrenTotal = 0;
   			}
-  			currPrice += childrenTotal;	
+  			currPrice += childrenTotal;
   		}
   		Session.set('price',currPrice);
-  		return currPrice;
+        if (Session.get('games')){
+            currPrice = 500+Session.get('price');
+        }
+        return currPrice;
 
   	}
 })
