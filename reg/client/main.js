@@ -20,7 +20,6 @@ Template.mainReg.onRendered(function() {
 	}
 	else {
 	    document.getElementById('reg_type').value='INDIVIDUAL';
-
 	}
     $('#gamesOpt').change(function(){
         if ($(this).is(":checked")){
@@ -40,7 +39,6 @@ Template.single.onRendered(function() {
 	}
 	else {
 	    document.getElementById('reg_type').value='INDIVIDUAL';
-
 	}
 });
 
@@ -82,8 +80,6 @@ Template.mainReg.events({
 		var price = Session.get('price')*1;
 		Meteor.call('reg',participant);
 		console.log(reg);
-
-
 		// res.forEach(doc => {
 		// 	console.log(doc);
 		//   // Collection.insert(doc);
@@ -93,7 +89,6 @@ Template.mainReg.events({
 		// 	console.log(res[i].value);
 		// 	participant[res[i].name] = res[i].value;
 		// }
-
   	},
 	'click .securePay': function(event) {
 		event.preventDefault();
@@ -102,7 +97,6 @@ Template.mainReg.events({
 
 		participant = {};
 		regForm = document.getElementById('regForm');
-
 
 		res = regForm.elements;
 		console.log(res);
@@ -194,8 +188,15 @@ Template.mainReg.helpers({
   			currPrice += childrenTotal;
   		}
   		Session.set('price',currPrice);
+  		var addition = 0;
+  		if (Session.get('team')) { 
+        		addition = 500 * 10; 
+        	}
+        	else {
+        		addition = 500;
+    	}
         if (Session.get('games')){
-            currPrice = 500+Session.get('price');
+            currPrice = addition+Session.get('price');
             Session.set('price',currPrice);
         }
         return currPrice;
