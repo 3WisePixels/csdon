@@ -16,7 +16,7 @@ Template.mainReg.onRendered(function() {
     selection = Session.get('team');
 	if (selection) {
     	document.getElementById('reg_type').value='TEAM';
-    	addition = 500 * 10;
+    	addition = 500 * Session.get('memberCount');
 		Session.set("children",0);
 	}
 	else {
@@ -44,7 +44,7 @@ Template.mainReg.events({
 		if (selection == 'TEAM') {
 			//document.location.reload(true);
 			Session.set("team",true);
-			addition = 500 * 10;
+			addition = 500 * Session.get('memberCount');
 		}
 		else {
 			//document.location.reload(true);
@@ -148,6 +148,7 @@ Template.mainReg.events({
 		currCount = Session.get('memberCount');
 		currCount += 1;
 		Session.set('memberCount',currCount);
+		addition = 500*currCount;
 		//document.location.reload(true);
 	},
 })
