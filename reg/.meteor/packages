@@ -29,3 +29,6 @@ materialize:materialize@=0.97.6
 mikowals:batch-insert
 less@2.7.9
 dynamic-import
+email
+cunneen:mailgun
+check
