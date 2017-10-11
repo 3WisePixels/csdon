@@ -107,7 +107,7 @@ Template.mainReg.events({
 				participant[res[i].name] = res[i].value;
 			}
 		}
-		console.log(participant);
+		console.log(participant['email']);
 		var price = Session.get('price')*100;
         var handler = PaystackPop.setup({
             key: 'pk_live_bc32ba513cc77d0456fd1e3befd133af0306a136',
@@ -118,8 +118,17 @@ Template.mainReg.events({
             ref: Date.now(),
             callback: function(response){
           	console.log('Success. transaction ref is ' + response.trxref);
-          	alert('Registration complete. We will contact you shortly. Thanks for your support!');
-			Meteor.call('reg',participant);
+
+            Meteor.call('reg',participant);
+            //To CSDON
+            Meteor.call('sendEmail',{to:'contact@csdon.org',from:'thelab@3wp.io',subject:'RunForCure17 Registration',text:'',
+              html:'Hi there!. Someone has registered for the Run!'
+            })
+            // To User
+            Meteor.call('sendEmail',{to:participant['email'],from:'contact@csdon.org',subject:'RunForCure17 Registration',text:'',
+              html:'<p>Hi '+participant['fullName']+'!</p><br><p>You have successfully registered for 2017 Run For Cure</p><br><p>When: <em>Saturday, November 18, 2017 06:00AM</em></p><br><p>Where: <em>Muri Okunola Park, Victoria Island, Lagos</em></p><br>We appreciate your support! See you there!'
+            })
+            alert('Registration complete. We will contact you shortly. Thanks for your support!');
             document.getElementById('regForm').reset();
             },
             onClose: function(){
@@ -186,8 +195,8 @@ Template.mainReg.helpers({
   			currPrice += childrenTotal;
   		}
   		Session.set('price',currPrice);
-  		// if (Session.get('team')) { 
-    //     		addition = 500 * 10; 
+  		// if (Session.get('team')) {
+    //     		addition = 500 * 10;
     //     	}
     //     	else {
     //     		addition = 500;
