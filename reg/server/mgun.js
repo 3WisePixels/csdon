@@ -1,13 +1,13 @@
 Meteor.startup(function(){
-    Meteor.Mailgun.config({
-      username: 'postmaster@3wp.io',
-      password: 'Rule#M4Car81n3'
-    });
+    // Meteor.Mailgun.config({
+    //   username: 'postmaster@3wp.io',
+    //   password: 'Rule#M4Car81n3'
+    // });
     smtp = {
-        username: 'postmaster@3wp.io',
+        username: 'contact@csdon.org',
         password: 'Rule#M4Car81n3',
-        server: 'smtp.mailgun.org',
-        port: 465
+        server: 'smtp-mail.outlook.com',
+        port: 587
     }
 
     process.env.MAIL_URL = 'smtps://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
@@ -26,7 +26,7 @@ Meteor.startup(function(){
         // without waiting for the email sending to complete.
         this.unblock();
 
-        Meteor.Mailgun.send({
+        Email.send({
             to: mailFields.to,
             from: mailFields.from,
             subject: mailFields.subject,

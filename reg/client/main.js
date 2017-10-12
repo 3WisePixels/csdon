@@ -122,11 +122,11 @@ Template.mainReg.events({
             Meteor.call('reg',participant);
             //To CSDON
             Meteor.call('sendEmail',{to:'contact@csdon.org',from:'thelab@3wp.io',subject:'RunForCure17 Registration',text:'',
-              html:'Hi there!. Someone has registered for the Run!'
+              html:'<p>Hi there! Someone has registered for the Run!</p><p>Details:<br>'+participant+'</p>'
             })
             // To User
             Meteor.call('sendEmail',{to:participant['email'],from:'contact@csdon.org',subject:'RunForCure17 Registration',text:'',
-              html:'<p>Hi '+participant['fullName']+'!</p><br><p>You have successfully registered for 2017 Run For Cure</p><br><p>When: <em>Saturday, November 18, 2017 06:00AM</em></p><br><p>Where: <em>Muri Okunola Park, Victoria Island, Lagos</em></p><br>We appreciate your support! See you there!'
+              html:'<p>Hi '+participant['fullName']+'!</p><p>You have successfully registered for 2017 Run For Cure</p><p>When: <strong>Saturday, November 18, 2017 06:00AM</strong><br>Where: <strong>Muri Okunola Park, Victoria Island, Lagos</strong></p><p>We appreciate your support! See you there!</p>'
             })
             alert('Registration complete. We will contact you shortly. Thanks for your support!');
             document.getElementById('regForm').reset();
