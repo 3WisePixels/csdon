@@ -108,7 +108,7 @@ Template.mainReg.events({
 			}
 		}
 		console.log(participant['email']);
-		var price = Session.get('price')*100;
+		var price = Session.get('pPrice')*100;
         var handler = PaystackPop.setup({
             key: 'pk_live_bc32ba513cc77d0456fd1e3befd133af0306a136',
             email: 'contact@csdon.org',
@@ -121,7 +121,7 @@ Template.mainReg.events({
 
             Meteor.call('reg',participant);
             //To CSDON
-            Meteor.call('sendEmail',{to:'contact@csdon.org',from:'thelab@3wp.io',subject:'RunForCure17 Registration',text:'',
+            Meteor.call('sendEmail',{to:'contact@csdon.org',from:'hello@3wp.io',subject:'RunForCure17 Registration',text:'',
               html:'<p>Hi there! Someone has registered for the Run!</p><p>Details:<br>'+participant+'</p>'
             })
             // To User
@@ -204,6 +204,7 @@ Template.mainReg.helpers({
     	console.log(addition);
         if (Session.get('games')){
             currPrice = addition+Session.get('price');
+            Session.set('pPrice',currPrice)
         }
         return currPrice;
 

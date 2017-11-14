@@ -4,10 +4,10 @@ Meteor.startup(function(){
     //   password: 'Rule#M4Car81n3'
     // });
     smtp = {
-        username: 'contact@csdon.org',
-        password: 'Rule#M4Car81n3',
-        server: 'smtp-mail.outlook.com',
-        port: 587
+        username: 'hello@3wp.io',
+        password: 'Rule#Hma1L',
+        server: 'smtp.gmail.com',
+        port: 465
     }
 
     process.env.MAIL_URL = 'smtps://' + encodeURIComponent(smtp.username) + ':' + encodeURIComponent(smtp.password) + '@' + encodeURIComponent(smtp.server) + ':' + smtp.port;
